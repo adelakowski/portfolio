@@ -6,17 +6,26 @@
             "**/.*",
             "**/node_modules/**"
         ],
+        "cleanUrls": true,
         "rewrites": [
+            {
+                "source": "/projects/__next.projects.__PAGE__.txt",
+                "destination": "/projects/__next.projects/__PAGE__.txt"
+            },
+            {
+                "source": "/contact/__next.contact.__PAGE__.txt",
+                "destination": "/contact/__next.contact/__PAGE__.txt"
+            },
+            {
+                "source": "/_not-found/__next._not-found.__PAGE__.txt",
+                "destination": "/_not-found/__next._not-found/__PAGE__.txt"
+            },
             {
                 "source": "/api/**",
                 "run": {
                     "serviceId": "portfolio",
                     "region": "us-central1"
                 }
-            },
-            {
-                "source": "**",
-                "destination": "/index.html"
             }
         ]
     }

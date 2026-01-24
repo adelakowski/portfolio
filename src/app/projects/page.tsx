@@ -9,7 +9,7 @@ export default function Projects() {
                     Selected Work
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-400">
-                    A collection of projects bridging biomedical engineering and modern software solutions.
+                    A collection of projects highlighting modern software solutions.
                 </p>
             </div>
 

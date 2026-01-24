@@ -11,28 +11,28 @@ export const PROJECTS: Project[] = [
         title: "Kinemax Fusion Engine",
         description: "A high-performance backend service for kinetic data analysis, deployed on Google Cloud Run with GPU acceleration.",
         techStack: ["Python", "FastAPI", "Docker", "GCP", "NVIDIA L4 GPU"],
-        link: "#",
-        imageUrl: "/assets/projects/kinemax.jpg"
+        link: "https://kinemax-engine.web.app/",
+        imageUrl: "/assets/projects/kinemax.png"
     },
     {
-        title: "Member Directory System",
-        description: "A robust full-stack application for managing organizational members with role-based access control.",
-        techStack: ["React", "Spring Boot", "PostgreSQL", "Firebase"],
-        link: "#",
-        imageUrl: "/assets/projects/directory.jpg"
+        title: "Automated Job Board",
+        description: "Scalable serverless data pipeline on GCP utilizing OpenAI to parse unstructured HTML, serving 10,000+ active users.",
+        techStack: ["Python", "React", "GCP", "OpenAI"],
+        link: "https://haig-engine.web.app/",
+        imageUrl: "/assets/projects/dashboard.png"
     },
     {
-        title: "Clinical Data Dashboard",
-        description: "Interactive visualization tool for analyzing patient outcomes and treatment efficacy trends.",
-        techStack: ["Next.js", "D3.js", "TypeScript", "Tailwind CSS"],
-        link: "#",
-        imageUrl: "/assets/projects/dashboard.jpg"
+        title: "Secure Member Directory",
+        description: "RESTful backend middleware acting as a secure proxy to the Airtable API with role-based access control.",
+        techStack: ["Java", "Spring Boot", "Docker", "GCP", "Airtable"],
+        link: "https://haig-directory.web.app/",
+        imageUrl: "/assets/projects/directory.png"
     },
     {
-        title: "Portfolio V1",
-        description: "The first iteration of my personal portfolio, showcasing early web development skills.",
-        techStack: ["HTML", "CSS", "JavaScript"],
-        link: "#",
-        imageUrl: "/assets/projects/portfolio-v1.jpg"
+        title: "HARP SPARC",
+        description: "Accessible data analysis platform using Echo State Networks and RNNs to democratize advanced neural network research.",
+        techStack: ["GCP", "Firebase", "Vertex AI", "Neural Networks"],
+        link: "https://www.harpsparc.com/",
+        imageUrl: "/assets/projects/harp.png"
     }
 ];

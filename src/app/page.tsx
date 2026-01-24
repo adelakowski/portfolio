@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4 text-center">
-      <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="flex flex-col md:flex-row items-center justify-between flex-grow px-4 max-w-6xl mx-auto w-full gap-12">
+      <div className="space-y-8 flex-1 text-center md:text-left">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ export default function Home() {
           </h1>
 
           <h2 className="text-2xl md:text-4xl font-light text-gray-700 dark:text-gray-300">
-            Biomedical Engineer turned Software Engineer
+            Biomedical Engineer and Software Engineer
           </h2>
 
           <p className="text-xl text-gray-500 dark:text-gray-400 font-light">
@@ -31,7 +31,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center py-8"
+          className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start py-8"
         >
           <Link
             href="/projects"
@@ -48,6 +48,21 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="flex-1 flex justify-center md:justify-end"
+      >
+        <div className="relative inline-block rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+          <img
+            src="/assets/profile.jpg"
+            alt="Axel Delakowski"
+            className="w-auto h-auto max-w-[320px] md:max-w-[600px] object-contain"
+          />
+        </div>
+      </motion.div>
     </div>
   );
 }

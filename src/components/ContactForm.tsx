@@ -29,11 +29,13 @@ export default function ContactForm() {
         resolver: zodResolver(formSchema),
     });
 
-    const onSubmit = async (data: FormData) => {
+    const onSubmit = (data: FormData) => {
         setIsSubmitting(true);
-        // Simulate API call
-        console.log("Form Data Submitted:", data);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        const subject = `Portfolio Contact from ${data.name}`;
+        const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+
+        window.location.href = `mailto:axeldelakowski@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         setIsSubmitting(false);
         setIsSuccess(true);
@@ -48,7 +50,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800"
+            className="bg-white/10 dark:bg-black/20 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100/20 dark:border-gray-800/50"
         >
             <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send me a message</h2>
 

@@ -21,12 +21,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         >
             <div className="relative h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                 {project.imageUrl ? (
-                    <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-400">
-                        {/* Placeholder for now until images are added */}
-                        <span className="text-sm">Image: {project.title}</span>
-                    </div>
+                    <img
+                        src={project.imageUrl}
+                        alt={project.title}
+                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    />
                 ) : (
-                    <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800" />
+                    <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                        <span className="text-gray-400 text-sm">No Image</span>
+                    </div>
                 )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors duration-300" />
             </div>
