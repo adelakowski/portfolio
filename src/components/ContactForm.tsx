@@ -50,9 +50,9 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white/10 dark:bg-black/20 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100/20 dark:border-gray-800/50"
+            className="bg-white/10 dark:bg-black/20 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-gray-100/20 dark:border-gray-800/50"
         >
-            <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send me a message</h2>
+            <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Send me a message</h2>
 
             {isSuccess ? (
                 <motion.div
@@ -75,8 +75,8 @@ export default function ContactForm() {
                     </button>
                 </motion.div>
             ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="space-y-2">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <div className="space-y-1">
                         <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Name
                         </label>
@@ -84,7 +84,7 @@ export default function ContactForm() {
                             {...register("name")}
                             type="text"
                             id="name"
-                            className={`w-full px-4 py-3 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all
+                            className={`w-full px-3 py-2 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all
                 ${errors.name
                                     ? "border-red-300 focus:border-red-500 dark:border-red-800"
                                     : "border-gray-200 dark:border-gray-700 focus:border-primary"
@@ -101,7 +101,7 @@ export default function ContactForm() {
                         )}
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Email
                         </label>
@@ -109,7 +109,7 @@ export default function ContactForm() {
                             {...register("email")}
                             type="email"
                             id="email"
-                            className={`w-full px-4 py-3 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all
+                            className={`w-full px-3 py-2 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all
                 ${errors.email
                                     ? "border-red-300 focus:border-red-500 dark:border-red-800"
                                     : "border-gray-200 dark:border-gray-700 focus:border-primary"
@@ -126,15 +126,15 @@ export default function ContactForm() {
                         )}
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Message
                         </label>
                         <textarea
                             {...register("message")}
                             id="message"
-                            rows={4}
-                            className={`w-full px-4 py-3 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none
+                            rows={3}
+                            className={`w-full px-3 py-2 rounded-lg border bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none
                 ${errors.message
                                     ? "border-red-300 focus:border-red-500 dark:border-red-800"
                                     : "border-gray-200 dark:border-gray-700 focus:border-primary"
