@@ -15,16 +15,20 @@ export default function Home() {
           className="space-y-6"
         >
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent pb-2">
-            Hello, I'm Axel
+            Hello, I'm Axel Delakowski
           </h1>
 
-          <h2 className="text-2xl md:text-4xl font-light text-gray-700 dark:text-gray-300">
-            Biomedical Engineer and Software Engineer
-          </h2>
-
-          <p className="text-xl text-gray-500 dark:text-gray-400 font-light">
-            Masters Candidate at UPenn
-          </p>
+          <div className="space-y-4 text-left relative z-10">
+            <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium">
+              Biomedical Engineer <span className="text-gray-400">@</span> <a href="https://www.organox.com/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">OrganOx</a>
+            </h2>
+            <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium">
+              Software Engineer <span className="text-gray-400">@</span> <a href="https://www.healthcareaiguy.com/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">HealthcareAIGuy</a>
+            </h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 pt-2 leading-relaxed max-w-xl">
+              Pursuing a Master of Science in Computer Information Technology at <span className="text-gray-800 dark:text-gray-200 font-medium">UPenn</span>.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div

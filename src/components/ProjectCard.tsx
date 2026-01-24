@@ -12,7 +12,10 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
     return (
-        <motion.div
+        <motion.a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -44,7 +47,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </p>
 
                 <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                             <span
                                 key={tech}
@@ -54,15 +57,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                             </span>
                         ))}
                     </div>
-
-                    <a
-                        href={project.link}
-                        className="inline-flex items-center text-sm font-medium text-primary hover:text-blue-700 transition-colors"
-                    >
-                        View Project <ExternalLink size={14} className="ml-1" />
-                    </a>
                 </div>
             </div>
-        </motion.div>
+        </motion.a>
     );
 }
