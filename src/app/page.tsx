@@ -26,7 +26,7 @@ export default function Home() {
               Software Engineer <span className="text-gray-400">@</span> <a href="https://www.healthcareaiguy.com/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">HealthcareAIGuy</a>
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400 pt-2 leading-relaxed max-w-xl">
-              Pursuing a Master of Science in Computer Information Technology at <span className="text-gray-800 dark:text-gray-200 font-medium">UPenn</span>.
+              Pursuing a Master of Science in Computer Information Technology at <a href="https://online.seas.upenn.edu/degrees/mcit-online/academics/" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 font-medium hover:text-primary transition-colors hover:underline">UPenn</a>.
             </p>
           </div>
         </motion.div>
