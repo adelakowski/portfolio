@@ -24,7 +24,7 @@ export default function Navbar() {
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a
-            href="/assets/Axel_Delakowski_Resume.pdf"
+            href="/assets/Axel_Delakowski_Resume_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center gap-2 dark:bg-primary dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"

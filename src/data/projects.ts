@@ -8,6 +8,13 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
     {
+        title: "VisionLink",
+        description: "VisionLink bridges the gap between advanced AI perception and clinical dialogue to provide automated ophthalmic triage in resource-limited settings. By combining vision-language models with medical reasoning, we enable early detection and appropriate referral for sight-threatening conditions like diabetic retinopathy and glaucoma.",
+        techStack: ["LangGraph", "PaliGemma", "GCP", "Vertex AI", "React"],
+        link: "https://visionlinktriage.web.app/",
+        imageUrl: "/assets/projects/visionlink.png"
+    },
+    {
         title: "Kinemax Fusion Engine",
         description: "A high-performance backend service for kinetic data analysis, deployed on Google Cloud Run with GPU acceleration.",
         techStack: ["Python", "FastAPI", "Docker", "GCP", "NVIDIA L4 GPU"],
