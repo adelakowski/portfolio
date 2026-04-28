@@ -19,10 +19,12 @@ interface Config {
 }
 
 function extendMaterial(
-    BaseMaterial: new (options?: THREE.MeshStandardMaterialParameters) => THREE.Material,
+    BaseMaterial: new (options?: THREE.MeshStandardMaterialParameters) => THREE.MeshStandardMaterial,
     cfg: Config
 ) {
-    const physical = THREE.ShaderLib.physical as THREE.Shader & { defines?: Record<string, unknown> };
+    const physical = THREE.ShaderLib.physical as typeof THREE.ShaderLib.physical & {
+        defines?: Record<string, unknown>;
+    };
     const { vertexShader: baseVert, fragmentShader: baseFrag, uniforms: baseUniforms } = physical;
     const baseDefines = physical.defines ?? {};
 
@@ -30,16 +32,12 @@ function extendMaterial(
 
     const defaults = new BaseMaterial(cfg.material || {});
 
-    // @ts-expect-error Shader uniform narrowing for material defaults.
-    if (defaults.color) uniforms.diffuse.value = defaults.color;
-    // @ts-expect-error Shader uniform narrowing for material defaults.
-    if ('roughness' in defaults) uniforms.roughness.value = defaults.roughness;
-    // @ts-expect-error Shader uniform narrowing for material defaults.
-    if ('metalness' in defaults) uniforms.metalness.value = defaults.metalness;
-    // @ts-expect-error Shader uniform narrowing for material defaults.
-    if ('envMap' in defaults) uniforms.envMap.value = defaults.envMap;
-    // @ts-expect-error Shader uniform narrowing for material defaults.
-    if ('envMapIntensity' in defaults) uniforms.envMapIntensity.value = defaults.envMapIntensity;
+    const shaderUniforms = uniforms as Record<string, { value: unknown }>;
+    if (defaults.color) shaderUniforms.diffuse.value = defaults.color;
+    if ('roughness' in defaults) shaderUniforms.roughness.value = defaults.roughness;
+    if ('metalness' in defaults) shaderUniforms.metalness.value = defaults.metalness;
+    if ('envMap' in defaults) shaderUniforms.envMap.value = defaults.envMap;
+    if ('envMapIntensity' in defaults) shaderUniforms.envMapIntensity.value = defaults.envMapIntensity;
 
     Object.entries(cfg.uniforms ?? {}).forEach(([key, u]) => {
         uniforms[key] = u !== null && typeof u === 'object' && 'value' in u ? u : { value: u };
