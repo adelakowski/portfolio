@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 "use client";
 
 import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo } from 'react';
@@ -10,8 +9,8 @@ import { degToRad } from 'three/src/math/MathUtils.js';
 import './Beams.css';
 
 interface Config {
-    material?: Record<string, any>;
-    uniforms?: Record<string, any>;
+    material?: Record<string, unknown>;
+    uniforms?: Record<string, unknown>;
     header?: string;
     vertexHeader?: string;
     fragmentHeader?: string;
@@ -19,8 +18,11 @@ interface Config {
     fragment?: Record<string, string>;
 }
 
-function extendMaterial(BaseMaterial: new (options?: any) => THREE.Material, cfg: Config) {
-    const physical = THREE.ShaderLib.physical as any;
+function extendMaterial(
+    BaseMaterial: new (options?: THREE.MeshStandardMaterialParameters) => THREE.Material,
+    cfg: Config
+) {
+    const physical = THREE.ShaderLib.physical as THREE.Shader & { defines?: Record<string, unknown> };
     const { vertexShader: baseVert, fragmentShader: baseFrag, uniforms: baseUniforms } = physical;
     const baseDefines = physical.defines ?? {};
 
@@ -28,15 +30,15 @@ function extendMaterial(BaseMaterial: new (options?: any) => THREE.Material, cfg
 
     const defaults = new BaseMaterial(cfg.material || {});
 
-    // @ts-ignore
+    // @ts-expect-error Shader uniform narrowing for material defaults.
     if (defaults.color) uniforms.diffuse.value = defaults.color;
-    // @ts-ignore
+    // @ts-expect-error Shader uniform narrowing for material defaults.
     if ('roughness' in defaults) uniforms.roughness.value = defaults.roughness;
-    // @ts-ignore
+    // @ts-expect-error Shader uniform narrowing for material defaults.
     if ('metalness' in defaults) uniforms.metalness.value = defaults.metalness;
-    // @ts-ignore
+    // @ts-expect-error Shader uniform narrowing for material defaults.
     if ('envMap' in defaults) uniforms.envMap.value = defaults.envMap;
-    // @ts-ignore
+    // @ts-expect-error Shader uniform narrowing for material defaults.
     if ('envMapIntensity' in defaults) uniforms.envMapIntensity.value = defaults.envMapIntensity;
 
     Object.entries(cfg.uniforms ?? {}).forEach(([key, u]) => {
@@ -324,7 +326,7 @@ const MergedPlanes = forwardRef<THREE.Mesh, MergedPlanesProps>(({ material, widt
     );
     useFrame((_, delta) => {
         if (mesh.current) {
-            // @ts-ignore
+            // @ts-expect-error Custom shader material exposes uniforms at runtime.
             mesh.current.material.uniforms.time.value += 0.1 * delta;
         }
     });

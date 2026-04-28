@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
-import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 interface ProjectCardProps {
@@ -24,9 +23,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         >
             <div className="relative h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                 {project.imageUrl ? (
-                    <img
+                    <Image
                         src={project.imageUrl}
                         alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     />
                 ) : (

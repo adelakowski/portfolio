@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 
-interface FooterProps extends React.HTMLAttributes<HTMLElement> { }
+type FooterProps = React.HTMLAttributes<HTMLElement>;
 
 export default function Footer({ className, ...props }: FooterProps) {
     return (

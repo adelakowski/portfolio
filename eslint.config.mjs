@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated artifacts and backend build output:
+    "dist/**",
+    ".firebase/**",
+    "backend/target/**",
   ]),
 ]);
 

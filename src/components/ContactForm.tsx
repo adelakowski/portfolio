@@ -76,7 +76,7 @@ export default function ContactForm() {
                     </div>
                     <h3 className="text-xl font-semibold text-green-800 dark:text-green-200">Message Sent!</h3>
                     <p className="text-green-700 dark:text-green-300">
-                        Thanks for reaching out. I'll get back to you as soon as possible.
+                        Thanks for reaching out. I&apos;ll get back to you as soon as possible.
                     </p>
                     <button
                         onClick={() => setIsSuccess(false)}

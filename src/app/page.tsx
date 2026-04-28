@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
           className="space-y-6"
         >
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent pb-2">
-            Hello, I'm Axel Delakowski
+            Hello, I&apos;m Axel Delakowski
           </h1>
 
           <div className="space-y-4 text-left relative z-10">
@@ -60,10 +61,13 @@ export default function Home() {
         className="flex-1 flex justify-center md:justify-end"
       >
         <div className="relative inline-block rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
-          <img
+          <Image
             src="/assets/profile.jpg"
             alt="Axel Delakowski"
+            width={600}
+            height={600}
             className="w-auto h-auto max-w-[320px] md:max-w-[600px] object-contain"
+            priority
           />
         </div>
       </motion.div>
