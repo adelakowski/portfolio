@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+/dist/
 
 # production
 /build
@@ -23,6 +24,8 @@
 # misc
 .DS_Store
 *.pem
+.firebase/hosting.*.cache
+backend/target/
 
 # debug
 npm-debug.log*
