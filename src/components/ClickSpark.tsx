@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface ClickSparkProps {
     sparkColor?: string;
@@ -20,15 +21,17 @@ interface Spark {
 
 const ClickSpark = ({
     sparkColor = "#fff",
-    sparkSize = 10,
+    sparkSize = 5,
     sparkCount = 8,
     duration = 400,
 }: ClickSparkProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const sparksRef = useRef<Spark[]>([]);
     const startTimeRef = useRef<number | null>(null);
+    const reducedMotion = useReducedMotion();
 
     useEffect(() => {
+        if (reducedMotion) return;
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -101,7 +104,11 @@ const ClickSpark = ({
             window.removeEventListener("resize", resizeCanvas);
             window.removeEventListener("click", handleClick);
         };
-    }, [sparkColor, sparkSize, sparkCount, duration]);
+    }, [sparkColor, sparkSize, sparkCount, duration, reducedMotion]);
+
+    if (reducedMotion) {
+        return null;
+    }
 
     return (
         <canvas

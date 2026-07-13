@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, FileText } from "lucide-react";
 
 const navLinks = [
@@ -10,57 +11,88 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+const resumeHref = "/assets/Axel_Delakowski_Resume_2026.pdf";
+
+const resumeLinkClass =
+  "text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-accent/40 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center justify-center gap-2 transition-colors min-h-11";
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <nav className="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-black/70 backdrop-blur-md">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-primary dark:text-white">
+    <nav
+      aria-label="Main navigation"
+      className="fixed w-full z-50 top-0 start-0 border-b border-border bg-black/70 backdrop-blur-md"
+    >
+      <div className="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <Link href="/" className="flex items-center space-x-3">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white font-heading">
             Axel Delakowski
           </span>
         </Link>
 
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 items-center gap-2">
           <a
-            href="/assets/Axel_Delakowski_Resume_2026.pdf"
+            href={resumeHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center gap-2 dark:bg-primary dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"
+            className={`${resumeLinkClass} hidden md:inline-flex`}
           >
-            <FileText size={16} />
+            <FileText size={16} aria-hidden />
             Resume
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center justify-center min-w-11 min-h-11 text-gray-300 rounded-lg md:hidden hover:bg-surface-elevated focus:outline-none focus:ring-2 focus:ring-accent/40 cursor-pointer"
             aria-controls="navbar-sticky"
             aria-expanded={isOpen}
+            aria-label={isOpen ? "Close main menu" : "Open main menu"}
           >
-            <span className="sr-only">Open main menu</span>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         <div
-          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? "block" : "hidden"
-            }`}
+          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? "block" : "hidden"}`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 md:dark:hover:text-accent dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-border rounded-lg bg-surface md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={`block py-2 px-3 rounded md:p-0 transition-colors ${
+                      active
+                        ? "text-accent font-semibold"
+                        : "text-gray-200 hover:text-white md:hover:text-accent"
+                    }`}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="md:hidden pt-2 border-t border-border mt-2">
+              <a
+                href={resumeHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${resumeLinkClass} w-full`}
+                onClick={() => setIsOpen(false)}
+              >
+                <FileText size={16} aria-hidden />
+                Resume
+              </a>
+            </li>
           </ul>
         </div>
       </div>
