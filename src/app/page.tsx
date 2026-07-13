@@ -51,7 +51,6 @@ export default function Home() {
               >
                 HealthcareAIGuy
               </a>
-              <span className="text-gray-400 font-normal"> · 15,000+ users</span>
             </h2>
             <p className="text-lg text-gray-300 pt-2 leading-relaxed max-w-xl mx-auto md:mx-0">
               Pursuing a Master of Applied Science in Computer Science - AI Concentration at{" "}
